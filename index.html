@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather catboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="bgCanvas"></canvas>
+
+  <div class="container">
+    <h1>Weather catboard</h1>
+
+    <div class="card controls-card">
+      <div class="control-group">
+        <label for="citySelect">Обрати місто:</label>
+        <select id="citySelect">
+          <option value="dnipro" data-lat="48.4647" data-lon="35.0462">Дніпро</option>
+          <option value="kyiv" data-lat="50.4501" data-lon="30.5234">Київ</option>
+          <option value="lviv" data-lat="49.8383" data-lon="24.0232">Львів</option>
+          <option value="odesa" data-lat="46.4825" data-lon="30.7233">Одеса</option>
+          <option value="kharkiv" data-lat="49.9935" data-lon="36.2304">Харків</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label for="latInput">Широта:</label>
+        <input type="text" id="latInput" value="48.4647">
+      </div>
+
+      <div class="control-group">
+        <label for="lonInput">Довгота:</label>
+        <input type="text" id="lonInput" value="35.0462">
+      </div>
+
+      <button id="loadBtn">Завантажити</button>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="card main-weather-card">
+        <div class="card-header">
+          <h2 id="currentCity">Погода</h2>
+          <span id="currentDate" class="badge">---</span>
+        </div>
+
+        <div class="weather-display">
+          <canvas id="weatherCanvas" width="200" height="180"></canvas>
+          <div class="temp-box">
+            <div class="temp-value" id="currentTemp">--</div>
+            <div id="weatherDesc" class="weather-desc">Завантаження...</div>
+          </div>
+        </div>
+
+        <div class="weather-details-grid">
+          <div class="detail-item">
+            <span class="detail-label">Макс. / Мін.</span>
+            <span id="tempRange" class="detail-value">-- / --</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Макс. швидкість вітру</span>
+            <span id="windSpeed" class="detail-value">--</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Сума опадів</span>
+            <span id="precipitation" class="detail-value">--</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">WMO Код / ID</span>
+            <span id="wmoCode" class="detail-value">--</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card forecast-card">
+        <h2>Прогноз на 7 днів</h2>
+        <p class="subtitle">Оберіть день для перегляду деталей та збереження в localStorage:</p>
+        <div id="forecastContainer" class="forecast-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
